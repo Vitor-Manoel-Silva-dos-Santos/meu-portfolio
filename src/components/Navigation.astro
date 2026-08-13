@@ -6,13 +6,14 @@ const currentPath = Astro.url.pathname;
 ---
 
 <nav>
-  <a href="/" class="site-name">{siteConfig.name}</a>
+  <img src={siteConfig.logo} class="site-logo">
   <ul class="nav-menu">
-    <li>
+    <!-- <li>
       <a href="/" class={`menu-link ${currentPath === "/" ? "active" : ""}`}
         >{siteConfig.navigation.home}</a
       >
-    </li>
+    </li> -->
+
     <li>
       <a
         href="/posts"
@@ -20,19 +21,21 @@ const currentPath = Astro.url.pathname;
         >{siteConfig.navigation.posts}</a
       >
     </li>
-    <li>
+    
+    <!-- <li>
       <a
         href="/contact"
         class={`menu-link ${currentPath.startsWith("/contact") ? "active" : ""}`}
         >{siteConfig.navigation.contact}</a
       >
-    </li>
-    <li>
+    </li> -->
+    
+    <!-- <li>
       <a
         href="/comments"
         class={`menu-link ${currentPath.startsWith("/comments") ? "active" : ""}`}
         >{siteConfig.navigation.comments}</a
       >
-    </li>
+    </li> -->
   </ul>
 </nav>

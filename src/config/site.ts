@@ -1,9 +1,10 @@
 // Site-wide configuration
 export const siteConfig = {
   // Site metadata
+  logo: "/public/image/arteazul_icone.png",
   name: "Aukanaii",
   title: "Aukanaii",
-  description: "Artista visual ",
+  description: "Artista visual",
   
   // Navigation
   navigation: {
@@ -18,17 +19,14 @@ export const siteConfig = {
     prefix: "Me chamo",
     name: "Aukanaii",
     intro: "Artista visual indigena do povo Atikum e Pankará.\nBem-vindo ao meu portfólio!",
-    avatar: "/image/20943608.jpeg",
+    avatar: "/public/image/foto_avatar.jpg",
     buttons: {
       viewPosts: "View Posts",
       contactMe: "Contact Me",
     },
     socialLinks: [
-      { name: "Twitter", icon: "/svg/twitter.svg", url: "https://x.com/astrodotbuild" },
-      { name: "LinkedIn", icon: "/svg/linkedin.svg", url: "https://www.linkedin.com/company/astrodotbuild" },
-      { name: "Facebook", icon: "/svg/facebook.svg", url: "https://www.facebook.com/astrodotbuild" },
-      { name: "GitHub", icon: "/svg/github.svg", url: "https://github.com/tomcomtang/astro-cartoon-portfolio" },
-    ],
+      { name: "instagram", icon: "public/svg/instagram_original.svg", url: "https://www.instagram.com/aukanaii_art" }
+      ],
   },
   
   // About Section
@@ -60,10 +58,7 @@ export const siteConfig = {
     followMe: {
       title: "Follow Me",
       links: [
-        { name: "Twitter", icon: "/svg/twitter.svg", url: "https://x.com/astrodotbuild" },
-        { name: "LinkedIn", icon: "/svg/linkedin.svg", url: "https://www.linkedin.com/company/astrodotbuild" },
-        { name: "Facebook", icon: "/svg/facebook.svg", url: "https://www.facebook.com/astrodotbuild" },
-        { name: "GitHub", icon: "/svg/github.svg", url: "https://github.com/tomcomtang/astro-cartoon-portfolio" },
+        { name: "Instagram", icon: "/svg/twitter.svg", url: "https://x.com/astrodotbuild" },
       ],
     },
     footerText: [

@@ -20,20 +20,20 @@ import { projectsConfig } from "../config/projects";
             style="display:flex;position:relative;list-style-type:none;padding:0;margin:0;justify-content:flex-start;flex-direction:row;gap:0px;align-items:center;width:100%;height:100%;max-height:100%;max-width:100%;"
           >
             {
-              projectsConfig.images.map((imageSrc, index) => (
+              projectsConfig.projects.map((project, index) => (
                 <li
                   class="ticker-item"
                   aria-hidden="false"
                   aria-posinset={index + 1}
-                  aria-setsize={projectsConfig.images.length}
+                  aria-setsize={projectsConfig.projects.length}
                   style="flex-grow:0;flex-shrink:0;position:relative;height:fit-content;z-index:1000;transform:none"
                 >
                   <img
                     draggable="false"
-                    src={imageSrc}
-                    alt={`Project ${index + 1}`}
+                    src={project.coverImage}
+                    alt={project.title}
                     class="coverflow-item"
-                    style="transform:perspective(500px)"
+                    style="transform:none"
                   />
                 </li>
               ))
@@ -71,6 +71,50 @@ import { projectsConfig } from "../config/projects";
       </div>
     </div>
   </div>
+
+  <div
+    class="project-gallery-modal"
+    id="project-gallery-modal"
+    aria-hidden="true"
+  >
+    <button
+      type="button"
+      class="project-gallery-close"
+      id="project-gallery-close"
+      aria-label="Close gallery"
+    >
+      x
+    </button>
+
+    <div class="project-gallery-content">
+      <button
+        type="button"
+        class="project-gallery-nav project-gallery-prev"
+        id="project-gallery-prev"
+        aria-label="Previous image"
+      >
+        <span aria-hidden="true">&#8249;</span>
+      </button>
+
+      <img
+        id="project-gallery-image"
+        class="project-gallery-image"
+        src=""
+        alt="Project image preview"
+      />
+
+      <button
+        type="button"
+        class="project-gallery-nav project-gallery-next"
+        id="project-gallery-next"
+        aria-label="Next image"
+      >
+        <span aria-hidden="true">&#8250;</span>
+      </button>
+    </div>
+
+    <p class="project-gallery-counter" id="project-gallery-counter"></p>
+  </div>
 </section>
 
 <script
@@ -97,13 +141,91 @@ import { projectsConfig } from "../config/projects";
       document.getElementById("projects-data")?.textContent || "[]"
     );
 
+    // Fullscreen gallery elements
+    const galleryModal = document.getElementById("project-gallery-modal");
+    const galleryImage = document.getElementById("project-gallery-image");
+    const galleryCounter = document.getElementById("project-gallery-counter");
+    const galleryClose = document.getElementById("project-gallery-close");
+    const galleryPrev = document.getElementById("project-gallery-prev");
+    const galleryNext = document.getElementById("project-gallery-next");
+    let activeProjectGalleryImages = [];
+    let activeGalleryIndex = 0;
+
+    function getProjectGalleryImages(projectIndex) {
+      const project = projectsData[projectIndex] || {};
+      const projectGallery = Array.isArray(project.galleryImages)
+        ? project.galleryImages.filter((imagePath) =>
+            typeof imagePath === "string"
+          )
+        : [];
+
+      if (projectGallery.length > 0) return projectGallery;
+      if (typeof project.coverImage === "string" && project.coverImage.length > 0) {
+        return [project.coverImage];
+      }
+      return [];
+    }
+
+    function updateGalleryImage() {
+      if (
+        !galleryImage ||
+        !galleryCounter ||
+        activeProjectGalleryImages.length === 0
+      )
+        return;
+
+      const normalizedIndex =
+        ((activeGalleryIndex % activeProjectGalleryImages.length) +
+          activeProjectGalleryImages.length) %
+        activeProjectGalleryImages.length;
+      activeGalleryIndex = normalizedIndex;
+
+      galleryImage.src = activeProjectGalleryImages[normalizedIndex];
+      galleryImage.alt = `Project ${normalizedIndex + 1}`;
+      galleryCounter.textContent = `${normalizedIndex + 1} / ${activeProjectGalleryImages.length}`;
+    }
+
+    function openGallery(projectIndex) {
+      if (!galleryModal) return;
+
+      const project = projectsData[projectIndex] || {};
+      activeProjectGalleryImages = getProjectGalleryImages(projectIndex);
+      if (activeProjectGalleryImages.length === 0) return;
+
+      const coverIndex =
+        typeof project.coverImage === "string"
+          ? activeProjectGalleryImages.indexOf(project.coverImage)
+          : -1;
+      activeGalleryIndex = coverIndex >= 0 ? coverIndex : 0;
+      updateGalleryImage();
+      galleryModal.classList.add("is-open");
+      galleryModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      stopAutoPlay();
+    }
+
+    function closeGallery() {
+      if (!galleryModal) return;
+      galleryModal.classList.remove("is-open");
+      galleryModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (isAutoPlaying) {
+        startAutoPlay();
+      }
+    }
+
+    function openGalleryAtVirtualIndex(virtualIndex) {
+      const realIndex = getRealProjectIndex(virtualIndex);
+      openGallery(realIndex);
+    }
+
     // Update project description with vertical scroll to avoid flicker
     const descriptionTrack = document.getElementById(
       "project-description-track"
     );
     const descriptionViewport = document.querySelector(
       ".project-description-viewport"
-    ) as HTMLElement;
+    );
     let currentProjectIndex = 0;
     let isScrolling = false;
     let currentTranslateY = 0;
@@ -115,7 +237,7 @@ import { projectsConfig } from "../config/projects";
       const items = descriptionTrack.querySelectorAll(".project-content-item");
       if (items.length === 0) return;
 
-      const firstItem = items[0] as HTMLElement;
+      const firstItem = items[0];
       if (firstItem) {
         // Wait for layout to complete before measuring
         requestAnimationFrame(() => {
@@ -127,7 +249,7 @@ import { projectsConfig } from "../config/projects";
       }
     }
 
-    function updateProjectDescription(projectIndex: number) {
+    function updateProjectDescription(projectIndex) {
       if (!descriptionTrack || !descriptionViewport || isScrolling) return;
       if (projectIndex === currentProjectIndex) return;
 
@@ -137,7 +259,7 @@ import { projectsConfig } from "../config/projects";
       if (projectIndex < 0 || projectIndex >= items.length) return;
 
       // Get target project position
-      const targetItem = items[projectIndex] as HTMLElement;
+      const targetItem = items[projectIndex];
       if (!targetItem) return;
 
       // Compute target translate so the project aligns with viewport top
@@ -150,7 +272,7 @@ import { projectsConfig } from "../config/projects";
       const startTime = performance.now();
       const duration = 500; // 500ms scroll animation
 
-      function animateScroll(currentTime: number) {
+      function animateScroll(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
 
@@ -215,15 +337,15 @@ import { projectsConfig } from "../config/projects";
     let velocity = 0;
     let lastX = 0;
     let lastTime = 0;
-    let animationFrameId: number | null = null;
+    let animationFrameId = null;
     let dragDistance = 0;
-    let clickedItemIndex: number | null = null;
-    let autoPlayTimer: number | null = null;
+    let clickedItemIndex = null;
+    let autoPlayTimer = null;
     let isAutoPlaying = true;
     const autoPlayInterval = 4000;
     let lastProjectIndex = -1; // track last displayed project index
 
-    function getOffset(itemIndex: number, scrollX: number) {
+    function getOffset(itemIndex, scrollX) {
       if (!carouselContainer) return 0;
       const containerCenter = carouselContainer.offsetWidth / 2;
       const itemStart = itemIndex * (itemWidth + gap);
@@ -231,11 +353,7 @@ import { projectsConfig } from "../config/projects";
       return itemCenterX - containerCenter;
     }
 
-    function lerp(
-      input: number,
-      inputRange: number[],
-      outputRange: (number | string)[]
-    ) {
+    function lerp(input, inputRange, outputRange) {
       if (input <= inputRange[0]) return outputRange[0];
       if (input >= inputRange[inputRange.length - 1])
         return outputRange[outputRange.length - 1];
@@ -248,49 +366,44 @@ import { projectsConfig } from "../config/projects";
             typeof outputRange[i] === "string" &&
             outputRange[i].includes("%")
           ) {
-            const start = parseFloat(outputRange[i] as string);
-            const end = parseFloat(outputRange[i + 1] as string);
+            const start = parseFloat(outputRange[i]);
+            const end = parseFloat(outputRange[i + 1]);
             return start + (end - start) * t + "%";
           }
           return (
-            (outputRange[i] as number) +
-            ((outputRange[i + 1] as number) - (outputRange[i] as number)) * t
+            Number(outputRange[i]) +
+            (Number(outputRange[i + 1]) - Number(outputRange[i])) * t
           );
         }
       }
       return outputRange[0];
     }
 
-    function getTransformFromOffset(offset: number) {
-      const rotateY = lerp(offset, [-200, 0, 200], [20, 0, -20]);
+    function getTransformFromOffset(offset) {
+      const rotateY = 0;
       const scale = lerp(offset, [-200, 0, 200], [0.7, 1, 0.7]);
-      const x = lerp(
-        offset,
-        [-800, -200, 200, 800],
-        ["100%", "0%", "0%", "-100%"]
-      );
+      const x = "0%";
       const zIndex = Math.max(0, Math.round(1000 - Math.abs(offset)));
       return { rotateY, scale, x, zIndex };
     }
 
     function updateTransforms() {
       allItems.forEach((item, virtualIndex) => {
-        const img = item.querySelector(".coverflow-item") as HTMLElement;
+        const img = item.querySelector(".coverflow-item");
         if (!img) return;
 
         const offset = getOffset(virtualIndex, currentX);
         const { rotateY, scale, x, zIndex } = getTransformFromOffset(offset);
 
-        (item as HTMLElement).style.zIndex = zIndex.toString();
+        item.style.zIndex = zIndex.toString();
 
-        const xPx =
-          x === "0%" ? 0 : (parseFloat(x as string) / 100) * itemWidth;
+        const xPx = x === "0%" ? 0 : (parseFloat(x) / 100) * itemWidth;
 
-        img.style.transform = `perspective(500px) translateX(${xPx}px) rotateY(${rotateY}deg) scale(${scale})`;
+        img.style.transform = `translateX(${xPx}px) rotateY(${rotateY}deg) scale(${scale})`;
       });
     }
 
-    function getSnapPosition(virtualIndex: number) {
+    function getSnapPosition(virtualIndex) {
       if (!carouselContainer) return 0;
       const containerCenter = carouselContainer.offsetWidth / 2;
       const itemStart = virtualIndex * (itemWidth + gap);
@@ -342,7 +455,7 @@ import { projectsConfig } from "../config/projects";
     }
 
     // Map virtual index to real project index
-    function getRealProjectIndex(virtualIndex: number): number {
+    function getRealProjectIndex(virtualIndex) {
       // Virtual index ranges:
       // 0 ~ cloneCount-1: leading clones
       // cloneCount ~ cloneCount+totalItems-1: real items
@@ -371,7 +484,7 @@ import { projectsConfig } from "../config/projects";
     }
 
     // Convert virtual index to real index and update description before animation
-    function updateProjectDescriptionForVirtualIndex(virtualIndex: number) {
+    function updateProjectDescriptionForVirtualIndex(virtualIndex) {
       const realIndex = getRealProjectIndex(virtualIndex);
       if (realIndex !== lastProjectIndex) {
         lastProjectIndex = realIndex;
@@ -379,7 +492,7 @@ import { projectsConfig } from "../config/projects";
       }
     }
 
-    function goToItem(virtualIndex: number) {
+    function goToItem(virtualIndex) {
       // Update description before carousel animation starts
       updateProjectDescriptionForVirtualIndex(virtualIndex);
       const snapX = getSnapPosition(virtualIndex);
@@ -423,11 +536,11 @@ import { projectsConfig } from "../config/projects";
       }, 5000);
     }
 
-    function animateTo(targetX: number, duration = 450) {
+    function animateTo(targetX, duration = 450) {
       const startX = currentX;
       const startTime = performance.now();
 
-      function animate(currentTime: number) {
+      function animate(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
 
@@ -459,7 +572,11 @@ import { projectsConfig } from "../config/projects";
     }
 
     carouselUl.addEventListener("mousedown", (e) => {
-      const clickedElement = (e.target as HTMLElement).closest(".ticker-item");
+      const clickedTarget = e.target;
+      const clickedElement =
+        clickedTarget instanceof HTMLElement
+          ? clickedTarget.closest(".ticker-item")
+          : null;
       if (clickedElement) {
         clickedItemIndex = Array.from(allItems).indexOf(clickedElement);
       } else {
@@ -503,40 +620,38 @@ import { projectsConfig } from "../config/projects";
       lastTime = now;
     });
 
-    carouselUl.addEventListener("mouseup", () => {
-      if (isDragging) {
-        isDragging = false;
-        carouselUl.style.cursor = "grab";
+    function finishMouseDrag() {
+      if (!isDragging) return;
 
-        if (dragDistance < 5 && clickedItemIndex !== null) {
-          const offset = getOffset(clickedItemIndex, currentX);
+      isDragging = false;
+      carouselUl.style.cursor = "grab";
+      let openedGallery = false;
 
-          if (offset < -50) {
-            prevItem();
-          } else if (offset > 50) {
-            nextItem();
-          } else {
-            goToItem(clickedItemIndex);
-          }
-        } else {
-          const nearestIndex = findNearestItem();
-          // Update description before animation starts
-          updateProjectDescriptionForVirtualIndex(nearestIndex);
-          const snapX = getSnapPosition(nearestIndex);
-          animateTo(snapX);
-        }
+      if (dragDistance < 5 && clickedItemIndex !== null) {
+        openGalleryAtVirtualIndex(clickedItemIndex);
+        openedGallery = true;
+      } else {
+        const nearestIndex = findNearestItem();
+        // Update description before animation starts
+        updateProjectDescriptionForVirtualIndex(nearestIndex);
+        const snapX = getSnapPosition(nearestIndex);
+        animateTo(snapX);
+      }
 
-        dragDistance = 0;
-        clickedItemIndex = null;
+      dragDistance = 0;
+      clickedItemIndex = null;
 
+      if (!openedGallery) {
         pauseAutoPlay();
       }
-    });
+    }
+
+    carouselUl.addEventListener("mouseup", finishMouseDrag);
+    window.addEventListener("mouseup", finishMouseDrag);
 
     carouselUl.addEventListener("mouseleave", () => {
       if (isDragging) {
-        isDragging = false;
-        carouselUl.style.cursor = "grab";
+        carouselUl.style.cursor = "grabbing";
       }
     });
 
@@ -547,6 +662,7 @@ import { projectsConfig } from "../config/projects";
       lastX = e.touches[0].pageX;
       lastTime = performance.now();
       velocity = 0;
+      dragDistance = 0;
 
       pauseAutoPlay();
 
@@ -567,6 +683,7 @@ import { projectsConfig } from "../config/projects";
       }
 
       const x = e.touches[0].pageX - startX;
+      dragDistance = Math.abs(x);
       currentX = startScrollLeft + x;
       updateCarouselPosition();
 
@@ -577,21 +694,66 @@ import { projectsConfig } from "../config/projects";
     carouselUl.addEventListener("touchend", () => {
       if (isDragging) {
         isDragging = false;
+        let openedGallery = false;
 
-        const nearestIndex = findNearestItem();
-        // Update description before animation starts
-        updateProjectDescriptionForVirtualIndex(nearestIndex);
-        const snapX = getSnapPosition(nearestIndex);
-        animateTo(snapX);
+        if (dragDistance < 8) {
+          const nearestIndex = findNearestItem();
+          openGalleryAtVirtualIndex(nearestIndex);
+          openedGallery = true;
+        } else {
+          const nearestIndex = findNearestItem();
+          // Update description before animation starts
+          updateProjectDescriptionForVirtualIndex(nearestIndex);
+          const snapX = getSnapPosition(nearestIndex);
+          animateTo(snapX);
+        }
 
-        pauseAutoPlay();
+        dragDistance = 0;
+
+        if (!openedGallery) {
+          pauseAutoPlay();
+        }
+      }
+    });
+
+    galleryClose?.addEventListener("click", closeGallery);
+    galleryPrev?.addEventListener("click", () => {
+      activeGalleryIndex -= 1;
+      updateGalleryImage();
+    });
+    galleryNext?.addEventListener("click", () => {
+      activeGalleryIndex += 1;
+      updateGalleryImage();
+    });
+
+    galleryModal?.addEventListener("click", (e) => {
+      if (e.target === galleryModal) {
+        closeGallery();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!galleryModal || !galleryModal.classList.contains("is-open")) return;
+
+      if (e.key === "Escape") {
+        closeGallery();
+      }
+
+      if (e.key === "ArrowLeft") {
+        activeGalleryIndex -= 1;
+        updateGalleryImage();
+      }
+
+      if (e.key === "ArrowRight") {
+        activeGalleryIndex += 1;
+        updateGalleryImage();
       }
     });
 
     carouselUl.style.cursor = "grab";
 
     allImages.forEach((img) => {
-      (img as HTMLElement).style.cursor = "pointer";
+      img.style.cursor = "pointer";
     });
 
     if (carouselContainer) {
