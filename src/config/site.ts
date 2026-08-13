@@ -28,21 +28,26 @@ export const siteConfig = {
   hero: {
     prefix: "Me chamo",
     name: "Aukanaii",
-    intro: "Artista visual indigena do povo Atikum e Pankará.\nBem-vindo ao meu portfólio!",
+    intro: "Artista visual\nBem-vindo(a) ao meu portfólio!",
     avatar: withBase("image/foto_avatar.jpg"),
     buttons: {
-      viewPosts: "View Posts",
-      contactMe: "Contact Me",
+      viewPosts: "Projetos",
+      contactMe: "Sobre mim",
     },
     socialLinks: [
-      { name: "instagram", icon: withBase("svg/instagram_original.svg"), url: "https://www.instagram.com/aukanaii_art" }
+      {
+        name: "instagram",
+        icon: withBase("svg/instagram.svg"),
+        url: "https://www.instagram.com/aukanaii_art",
+        label: "@aukanaii_art",
+      }
       ],
   },
   
   // About Section
   about: {
-    title: "About Me",
-    text: "Hi, I'm Someone, a passionate web developer and blogger. I love exploring new technologies and sharing knowledge with the community. On this blog, you'll find my thoughts on web development, tutorials, and project showcases. I hope my content can inspire others in their coding journey.",
+    title: "Sobre mim",
+    text: "Olá, sou Aukanaii, uma artista visual apaixonada. Adoro explorar novas formas de expressão artística e compartilhar meu trabalho com a comunidade. Neste portfólio, você encontrará minhas criações e projetos. Espero que meu trabalho possa inspirar outros em sua jornada artística.",
   },
   
   // Contact Page
@@ -78,19 +83,19 @@ export const siteConfig = {
     messageButton: "💬 Leave a Message",
   },
   
-  // Footer
-  footer: {
-    copyright: "© 2025 Someone. All rights reserved.",
-    links: [
-      { text: "Privacy Policy", url: "#" },
-      { text: "Terms of Service", url: "#" },
-      { text: "Sitemap", url: "#" },
-    ],
-    github: {
-      text: "Star this project on Github",
-      url: "https://github.com/tomcomtang/astro-cartoon-portfolio",
-    },
-  },
+  // // Footer
+  // footer: {
+  //   copyright: "© 2025 Someone. All rights reserved.",
+  //   links: [
+  //     { text: "Privacy Policy", url: "#" },
+  //     { text: "Terms of Service", url: "#" },
+  //     { text: "Sitemap", url: "#" },
+  //   ],
+  //   github: {
+  //     text: "Star this project on Github",
+  //     url: "https://github.com/tomcomtang/astro-cartoon-portfolio",
+  //   },
+  // },
   
   // Posts Page
   posts: {

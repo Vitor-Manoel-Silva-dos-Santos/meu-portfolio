@@ -22,11 +22,31 @@ import { siteConfig } from "../config/site";
       </div>
     </div>
     <div class="hero-right-col">
-      <img src={siteConfig.hero.avatar} alt="avatar" class="hero-avatar hero-avatar-animate" />
+      <button
+        type="button"
+        class="hero-avatar hero-avatar-swap hero-avatar-animate"
+        aria-label="Alternar avatar e logo"
+      >
+        <img
+          src={siteConfig.hero.avatar}
+          alt="avatar"
+          class="hero-avatar-face"
+        />
+        <img
+          src={siteConfig.logo}
+          alt="logo"
+          class="hero-avatar-logo"
+        />
+      </button>
       <div class="social-list">
         {siteConfig.hero.socialLinks.map((social) => (
-          <a href={social.url} class="social-icon-btn social-icon-animate" aria-label={social.name}>
+          <a
+            href={social.url}
+            class={`social-icon-btn social-icon-animate ${social.label ? 'has-label' : ''}`}
+            aria-label={social.name}
+          >
             <img src={social.icon} alt={social.name.toLowerCase()} />
+            {social.label && <span class="social-icon-label">{social.label}</span>}
           </a>
         ))}
       </div>
@@ -59,6 +79,19 @@ import { siteConfig } from "../config/site";
       requestAnimationFrame(() => {
         heroAvatar.classList.add('visible');
       });
+
+      if (heroAvatar instanceof HTMLElement) {
+        heroAvatar.addEventListener('click', () => {
+          heroAvatar.classList.toggle('is-flipped');
+        });
+
+        heroAvatar.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            heroAvatar.classList.toggle('is-flipped');
+          }
+        });
+      }
     }
 
     // Trigger social icons animations

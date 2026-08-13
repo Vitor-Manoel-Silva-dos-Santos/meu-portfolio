@@ -261,7 +261,8 @@ nav {
   padding: 0;
   margin: 0;
   font-family: var(--font-sans);
-  padding-top: 180px;
+  padding-top: 120px;
+  padding-bottom: 80px;
 }
 
 .hero-content-wrapper {
@@ -385,20 +386,66 @@ nav {
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  appearance: none;
+  background: #fff;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   margin-bottom: 1.2rem;
   border: 4px solid #76cfc5;
+  cursor: pointer;
   transition:
     box-shadow 0.3s,
     border-color 0.3s,
     transform 0.2s;
 }
 
+.hero-avatar-face,
+.hero-avatar-logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.hero-avatar-face {
+  object-fit: cover;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-avatar-logo {
+  object-fit: contain;
+  padding: 1.2rem;
+  opacity: 0;
+  transform: scale(0.94);
+}
+
+.hero-avatar:hover .hero-avatar-face,
+.hero-avatar:focus-visible .hero-avatar-face,
+.hero-avatar.is-flipped .hero-avatar-face {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.hero-avatar:hover .hero-avatar-logo,
+.hero-avatar:focus-visible .hero-avatar-logo,
+.hero-avatar.is-flipped .hero-avatar-logo {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .hero-avatar:hover {
   transform: scale(1.06);
   box-shadow: 0 8px 32px rgba(118, 207, 197, 0.18);
   border-color: #ec6664;
+}
+
+.hero-avatar:focus-visible {
+  outline: 2px solid #ec6664;
+  outline-offset: 4px;
 }
 
 .social-list {
@@ -431,11 +478,40 @@ nav {
   width: 36px;
   height: 36px;
   display: block;
+  margin-bottom: 0;
   transition: transform 0.2s;
+}
+
+.social-icon-btn.has-label {
+  width: auto;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.social-icon-label {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  line-height: 1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #5d6a72;
 }
 
 .social-icon-btn:hover img {
   transform: scale(1.18);
+}
+
+.social-icon-btn.has-label:hover .social-icon-label {
+  color: #3e4b52;
 }
 
 /* About Me Section */
