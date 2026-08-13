@@ -33,6 +33,11 @@ import { projectsConfig } from "../config/projects";
                     src={project.coverImage}
                     alt={project.title}
                     class="coverflow-item"
+                    width="350"
+                    height="350"
+                    decoding="async"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchpriority={index === 0 ? "high" : "low"}
                     style="transform:none"
                   />
                 </li>
@@ -100,6 +105,7 @@ import { projectsConfig } from "../config/projects";
         id="project-gallery-image"
         class="project-gallery-image"
         src=""
+        decoding="async"
         alt="Project image preview"
       />
 
@@ -150,6 +156,30 @@ import { projectsConfig } from "../config/projects";
     const galleryNext = document.getElementById("project-gallery-next");
     let activeProjectGalleryImages = [];
     let activeGalleryIndex = 0;
+    const preloadedImages = new Set();
+
+    function preloadImage(src) {
+      if (!src || preloadedImages.has(src)) return;
+      const image = new Image();
+      image.decoding = "async";
+      image.src = src;
+      preloadedImages.add(src);
+    }
+
+    function preloadGalleryNeighbors(radius = 2) {
+      if (activeProjectGalleryImages.length === 0) return;
+
+      for (let step = 0; step <= radius; step++) {
+        const nextIndex =
+          (activeGalleryIndex + step) % activeProjectGalleryImages.length;
+        const prevIndex =
+          (activeGalleryIndex - step + activeProjectGalleryImages.length) %
+          activeProjectGalleryImages.length;
+
+        preloadImage(activeProjectGalleryImages[nextIndex]);
+        preloadImage(activeProjectGalleryImages[prevIndex]);
+      }
+    }
 
     function getProjectGalleryImages(projectIndex) {
       const project = projectsData[projectIndex] || {};
@@ -183,6 +213,7 @@ import { projectsConfig } from "../config/projects";
       galleryImage.src = activeProjectGalleryImages[normalizedIndex];
       galleryImage.alt = `Project ${normalizedIndex + 1}`;
       galleryCounter.textContent = `${normalizedIndex + 1} / ${activeProjectGalleryImages.length}`;
+      preloadGalleryNeighbors(2);
     }
 
     function openGallery(projectIndex) {
@@ -198,10 +229,17 @@ import { projectsConfig } from "../config/projects";
           : -1;
       activeGalleryIndex = coverIndex >= 0 ? coverIndex : 0;
       updateGalleryImage();
+      preloadGalleryNeighbors(3);
       galleryModal.classList.add("is-open");
       galleryModal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       stopAutoPlay();
+
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(() => preloadGalleryNeighbors(5));
+      } else {
+        setTimeout(() => preloadGalleryNeighbors(5), 200);
+      }
     }
 
     function closeGallery() {

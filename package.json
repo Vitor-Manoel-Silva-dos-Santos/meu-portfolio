@@ -24,5 +24,8 @@
     "remark-rehype": "^11.1.2",
     "unified": "^11.0.5"
   },
-  "overrides": {}
+  "overrides": {},
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
 }
