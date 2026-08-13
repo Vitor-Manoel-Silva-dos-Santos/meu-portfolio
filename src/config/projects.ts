@@ -1,11 +1,12 @@
 // Projects configuration
 const baseUrl = import.meta.env.BASE_URL;
+const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 
 function withBase(assetPath: string): string {
   const normalizedPath = assetPath
     .replace(/^\/+/, "")
     .replace(/^public\//, "");
-  return `${baseUrl}${normalizedPath}`;
+  return `${normalizedBaseUrl}${normalizedPath}`;
 }
 
 export const projectsConfig = {

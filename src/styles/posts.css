@@ -194,9 +194,9 @@
   height: 24px;
   opacity: 0.8;
   background: linear-gradient(135deg, #76cfc5 0%, #ffb400 50%, #ec6664 100%);
-  -webkit-mask: url(/svg/willow-decoration.svg) no-repeat center;
+  -webkit-mask: url(../svg/willow-decoration.svg) no-repeat center;
   -webkit-mask-size: contain;
-  mask: url(/svg/willow-decoration.svg) no-repeat center;
+  mask: url(../svg/willow-decoration.svg) no-repeat center;
   mask-size: contain;
   transform: scaleX(-1);
   margin-right: 0.5rem;
@@ -220,9 +220,9 @@
   height: 24px;
   opacity: 0.8;
   background: linear-gradient(135deg, #76cfc5 0%, #ffb400 50%, #ec6664 100%);
-  -webkit-mask: url(/svg/willow-decoration.svg) no-repeat center;
+  -webkit-mask: url(../svg/willow-decoration.svg) no-repeat center;
   -webkit-mask-size: contain;
-  mask: url(/svg/willow-decoration.svg) no-repeat center;
+  mask: url(../svg/willow-decoration.svg) no-repeat center;
   mask-size: contain;
   transform: scaleX(1);
   margin-left: 0.5rem;

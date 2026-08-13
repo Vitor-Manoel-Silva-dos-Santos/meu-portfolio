@@ -1,9 +1,10 @@
 // Post images mapping - maps post slug to image path
 const baseUrl = import.meta.env.BASE_URL;
+const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 
 function withBase(assetPath: string): string {
   const normalizedPath = assetPath.replace(/^\/+/, "");
-  return `${baseUrl}${normalizedPath}`;
+  return `${normalizedBaseUrl}${normalizedPath}`;
 }
 
 export const postImages: Record<string, string> = {
