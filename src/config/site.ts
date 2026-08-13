@@ -38,7 +38,7 @@ export const siteConfig = {
     socialLinks: [
       {
         name: "instagram",
-        icon: withBase("svg/instagram.svg"),
+        icon: withBase("svg/instagram_original.svg"),
         url: "https://www.instagram.com/aukanaii_art",
         label: "@aukanaii_art",
       }
