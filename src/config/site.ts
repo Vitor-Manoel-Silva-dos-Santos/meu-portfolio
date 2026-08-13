@@ -30,6 +30,7 @@ export const siteConfig = {
     name: "Aukanaii",
     intro: "Artista visual\nBem-vindo(a) ao meu portfólio!",
     avatar: withBase("image/foto_avatar.jpg"),
+    aboutme: withBase("image/sobre_mim.jpg"),
     buttons: {
       viewPosts: "Projetos",
       contactMe: "Sobre mim",

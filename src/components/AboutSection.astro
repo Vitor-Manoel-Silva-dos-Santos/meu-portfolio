@@ -4,8 +4,21 @@ import { siteConfig } from "../config/site";
 
 <section id="about" class="about-section">
   <div class="about-content">
-    <h2 class="about-title">{siteConfig.about.title}</h2>
-    <p class="about-text">{siteConfig.about.text}</p>
+    <div class="about-layout">
+      <div class="about-copy">
+        <h2 class="about-title">{siteConfig.about.title}</h2>
+        <p class="about-text">{siteConfig.about.text}</p>
+      </div>
+      <div class="about-image-wrap">
+        <img
+          src={siteConfig.hero.aboutme}
+          alt="Aukanaii"
+          class="about-image"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
   </div>
 </section>
 
