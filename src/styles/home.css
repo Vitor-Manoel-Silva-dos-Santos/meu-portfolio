@@ -518,9 +518,9 @@ nav {
 .about-section {
   background: linear-gradient(
     135deg,
-    #6dd5c7 0%,
-    #5bc0ae 50%,
-    #4db09e 100%
+    #739858 0%,
+    #739858 50%,
+    #739858 100%
   );
   width: 100vw;
   min-width: 100vw;
@@ -614,9 +614,9 @@ nav {
 .projects-section {
   background: linear-gradient(
     135deg,
-    #f0a868 0%,
-    #ecb993 50%,
-    #e8a87c 100%
+    #98551b 0%,
+    #98551b 50%,
+    #98551b 100%
   );
   width: 100vw;
   min-width: 100vw;
