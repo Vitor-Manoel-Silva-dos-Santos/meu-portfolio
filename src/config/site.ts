@@ -1,23 +1,23 @@
 // Site-wide configuration
 export const siteConfig = {
   // Site metadata
-  name: "Astro Blog",
-  title: "Astro Blog",
-  description: "A modern blog built with Astro",
+  name: "Aukanaii",
+  title: "Aukanaii",
+  description: "Artista visual ",
   
   // Navigation
   navigation: {
     home: "Home",
-    posts: "Posts",
-    contact: "Contact",
+    posts: "Artes",
+    contact: "Contato",
     comments: "Comments",
   },
   
   // Hero Section
   hero: {
-    prefix: "I am",
-    name: "Someone Name",
-    intro: "I am a web developer and blogger, passionate about sharing knowledge and building cool things with code.\nWelcome to my portfolio blog!",
+    prefix: "Me chamo",
+    name: "Aukanaii",
+    intro: "Artista visual indigena do povo Atikum e Pankará.\nBem-vindo ao meu portfólio!",
     avatar: "/image/20943608.jpeg",
     buttons: {
       viewPosts: "View Posts",
