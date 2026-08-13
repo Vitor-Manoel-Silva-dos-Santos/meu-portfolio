@@ -1,46 +1,68 @@
-# Astro Starter Kit: Basics
+# Astro Cartoon Portfolio
 
-```sh
-npm create astro@latest -- --template basics
+A modern, responsive portfolio website built with Astro 5, featuring a beautiful cartoon-style design with smooth animations, interactive project carousel, blog system, and comment integration.
+
+## Quick Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/tomcomtang/astro-cartoon-portfolio)
+
+## Preview
+
+You can preview the project online at:
+
+<https://astro-cartoon-portfolio.edgeone.app/>
+
+## Features
+
+- Cartoon-style Astro portfolio, responsive layout
+- Blog: Markdown posts, excerpts, tags, search, reading-time display, optional cover images
+- Config-driven content: site copy, project list, post images, social links
+- Comments via Giscus, SEO-friendly pages, smooth scroll animations
+
+## Tech Stack
+
+- Astro 5.x, TypeScript, Vite
+- Styling: custom CSS
+- Content: Markdown with Astro Content Collections
+- Comments: Giscus (React component)
+
+## Getting Started
+
+```bash
+git clone https://github.com/tomcomtang/astro-cartoon-portfolio.git
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Paths & Purpose
 
-## 🚀 Project Structure
+- `src/pages/index.astro` – Home (hero, projects, highlights)
+- `src/pages/posts.astro` – Blog list with search/tag filter
+- `src/pages/posts/[slug].astro` – Blog detail with comments
+- `src/pages/about.astro` – About/skills section
+- `src/pages/contact.astro` – Contact info and social links
+- `src/pages/comments.astro` – Giscus standalone page
+- `src/content/posts/` – Markdown blog posts
+- `src/config/site.ts` – Site copy, nav, social, hero/about/contact text
+- `src/config/projects.ts` – Project entries (title, desc, tech, links, images)
+- `src/config/posts-images.ts` – Post slug → cover image mapping
+- `src/styles/` – Page-level styles (home, posts list/detail, contact, transitions)
+- `public/` – Static assets (images, svg, fonts)
 
-Inside of your Astro project, you'll see the following folders and files:
+## Environment Variables
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+Set these for Giscus comments:
+
+```env
+PUBLIC_GISCUS_REPO=your-username/your-repo
+PUBLIC_GISCUS_REPO_ID=your-repo-id
+PUBLIC_GISCUS_CATEGORY_ID=your-category-id
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## License
 
-## 🧞 Commands
+MIT
 
-All commands are run from the root of the project, from a terminal:
+## Author
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+tomcomtang
