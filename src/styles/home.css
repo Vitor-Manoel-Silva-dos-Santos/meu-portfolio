@@ -1264,7 +1264,7 @@ footer {
 
   .about-text {
     order: 3;
-    text-align: center;
+    text-align: justify;
     margin: 0 auto;
   }
 
