@@ -14,7 +14,12 @@ export const projectsConfig = {
     {
       title: "Azul genipapo",
       coverImage: withBase("images/posts/azul_genipapo/Azulgenipapo.jpg"),
-      galleryImages: [withBase("images/posts/azul_genipapo/Azulgenipapo.jpg"), withBase("images/posts/azul_genipapo/Azulgenipapo2.jpg"), withBase("images/posts/azul_genipapo/Azulgenipapo3.jpg")],
+      galleryImages: [
+        withBase("images/posts/azul_genipapo/Azulgenipapo.jpg"), 
+        withBase("images/posts/azul_genipapo/modelothibranca.jpg"), 
+        withBase("images/posts/azul_genipapo/bolsa.jpg"), 
+        withBase("images/posts/azul_genipapo/modelothipreta.jpg")
+      ],
       description:
         "Uma obra que explora a beleza e a complexidade do genipapo azul, capturando suas cores vibrantes e texturas únicas.",
       // technologies: ["React", "Node.js", "MongoDB", "Stripe"],
