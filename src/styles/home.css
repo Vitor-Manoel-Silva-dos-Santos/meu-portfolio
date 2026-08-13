@@ -705,13 +705,14 @@ nav {
 
 @media (max-width: 600px) {
   .coverflow-carousel {
-    width: 250px;
+    width: min(88vw, 300px);
     height: 250px;
   }
   .coverflow-item {
-    width: 250px;
+    width: min(88vw, 300px);
     height: 250px;
     border-radius: 20px;
+    transition: opacity 0.22s ease;
   }
   .projects-container {
     padding: 0 1rem;
