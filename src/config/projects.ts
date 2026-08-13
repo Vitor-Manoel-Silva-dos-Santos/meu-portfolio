@@ -37,7 +37,7 @@ export const projectsConfig = {
       coverImage: withBase("images/posts/menino_peixe/Meninopeixe.jpg"),
       galleryImages: [
         withBase("images/posts/menino_peixe/Meninopeixe.jpg"), 
-        withBase("images/posts/menino_peixe/capalivro.jpg"),
+        withBase("images/posts/menino_peixe/capalivro.png"),
         withBase("images/posts/menino_peixe/Capacaderno.jpeg") 
       ],
       description:
