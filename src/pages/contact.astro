@@ -10,7 +10,7 @@ import { siteConfig } from "../config/site";
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>Get In Touch - Astro Blog</title>
@@ -42,7 +42,7 @@ import { siteConfig } from "../config/site";
             <div class="contact-info-list">
               <div class="contact-info-item">
                 <div class="contact-icon-wrapper email-icon">
-                  <img src="/svg/email.svg" alt="email icon" class="contact-icon" />
+                  <img src={`${import.meta.env.BASE_URL}svg/email.svg`} alt="email icon" class="contact-icon" />
                 </div>
                 <div class="contact-info-content">
                   <div class="contact-info-label">{siteConfig.contact.info.email.label}</div>
@@ -52,7 +52,7 @@ import { siteConfig } from "../config/site";
 
               <div class="contact-info-item">
                 <div class="contact-icon-wrapper phone-icon">
-                  <img src="/svg/phone.svg" alt="phone icon" class="contact-icon" />
+                  <img src={`${import.meta.env.BASE_URL}svg/phone.svg`} alt="phone icon" class="contact-icon" />
                 </div>
                 <div class="contact-info-content">
                   <div class="contact-info-label">{siteConfig.contact.info.phone.label}</div>
@@ -62,7 +62,7 @@ import { siteConfig } from "../config/site";
 
               <div class="contact-info-item">
                 <div class="contact-icon-wrapper location-icon">
-                  <img src="/svg/location.svg" alt="location icon" class="contact-icon" />
+                  <img src={`${import.meta.env.BASE_URL}svg/location.svg`} alt="location icon" class="contact-icon" />
                 </div>
                 <div class="contact-info-content">
                   <div class="contact-info-label">{siteConfig.contact.info.location.label}</div>

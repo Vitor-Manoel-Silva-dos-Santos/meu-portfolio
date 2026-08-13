@@ -723,18 +723,19 @@ nav {
   .mask {
     mask-image: linear-gradient(
       to right,
-      transparent 10%,
-      black 25%,
-      black 75%,
-      transparent 90%
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
     );
     -webkit-mask-image: linear-gradient(
       to right,
-      transparent 10%,
-      black 25%,
-      black 75%,
-      transparent 90%
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
     );
+    overflow: hidden;
   }
   .project-description-area {
     padding: 1.5rem 0;

@@ -1,7 +1,16 @@
 // Site-wide configuration
+const baseUrl = import.meta.env.BASE_URL;
+
+function withBase(assetPath: string): string {
+  const normalizedPath = assetPath
+    .replace(/^\/+/, "")
+    .replace(/^public\//, "");
+  return `${baseUrl}${normalizedPath}`;
+}
+
 export const siteConfig = {
   // Site metadata
-  logo: "/public/image/arteazul_icone.png",
+  logo: withBase("image/arteazul_icone.png"),
   name: "Aukanaii",
   title: "Aukanaii",
   description: "Artista visual",
@@ -19,13 +28,13 @@ export const siteConfig = {
     prefix: "Me chamo",
     name: "Aukanaii",
     intro: "Artista visual indigena do povo Atikum e Pankará.\nBem-vindo ao meu portfólio!",
-    avatar: "/public/image/foto_avatar.jpg",
+    avatar: withBase("image/foto_avatar.jpg"),
     buttons: {
       viewPosts: "View Posts",
       contactMe: "Contact Me",
     },
     socialLinks: [
-      { name: "instagram", icon: "public/svg/instagram_original.svg", url: "https://www.instagram.com/aukanaii_art" }
+      { name: "instagram", icon: withBase("svg/instagram_original.svg"), url: "https://www.instagram.com/aukanaii_art" }
       ],
   },
   
@@ -58,7 +67,7 @@ export const siteConfig = {
     followMe: {
       title: "Follow Me",
       links: [
-        { name: "Instagram", icon: "/svg/twitter.svg", url: "https://x.com/astrodotbuild" },
+        { name: "Instagram", icon: withBase("svg/twitter.svg"), url: "https://x.com/astrodotbuild" },
       ],
     },
     footerText: [

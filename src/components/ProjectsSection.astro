@@ -298,7 +298,7 @@ import { projectsConfig } from "../config/projects";
       requestAnimationFrame(animateScroll);
     }
 
-    const itemWidth = 350; // SVG image width
+    let itemWidth = 350;
     const gap = 0;
     const totalItems = items.length;
     const cloneCount = totalItems;
@@ -329,6 +329,16 @@ import { projectsConfig } from "../config/projects";
     const allItems = carouselUl.querySelectorAll(".ticker-item");
     const allImages = carouselUl.querySelectorAll(".coverflow-item");
     const totalVirtualItems = totalItems * 3;
+
+    function updateItemWidth() {
+      const referenceImage = carouselUl.querySelector(".coverflow-item");
+      if (!referenceImage) return;
+
+      const measuredWidth = referenceImage.getBoundingClientRect().width;
+      if (measuredWidth > 0) {
+        itemWidth = measuredWidth;
+      }
+    }
 
     let currentX = 0;
     let isDragging = false;
@@ -571,6 +581,13 @@ import { projectsConfig } from "../config/projects";
       checkLoopJump();
     }
 
+    function recenterCarousel() {
+      updateItemWidth();
+      const nearestIndex = findNearestItem();
+      currentX = getSnapPosition(nearestIndex);
+      updateCarouselPosition();
+    }
+
     carouselUl.addEventListener("mousedown", (e) => {
       const clickedTarget = e.target;
       const clickedElement =
@@ -757,10 +774,13 @@ import { projectsConfig } from "../config/projects";
     });
 
     if (carouselContainer) {
+      updateItemWidth();
       const centerVirtualIndex = totalItems;
       currentX = getSnapPosition(centerVirtualIndex);
       updateCarouselPosition();
     }
+
+    window.addEventListener("resize", recenterCarousel);
 
     updateTransforms();
 
