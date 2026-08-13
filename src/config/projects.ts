@@ -37,8 +37,8 @@ export const projectsConfig = {
       coverImage: withBase("images/posts/menino_peixe/Meninopeixe.jpg"),
       galleryImages: [
         withBase("images/posts/menino_peixe/Meninopeixe.jpg"), 
-        withBase("images/posts/menino_peixe/Capacaderno.jpeg"), 
-        withBase("images/posts/menino_peixe/Meninopeixe3.jpg")
+        withBase("images/posts/menino_peixe/capalivro.jpg"),
+        withBase("images/posts/menino_peixe/Capacaderno.jpeg") 
       ],
       description:
         "Uma obra que retrata a conexão harmoniosa entre o menino e a natureza, explorando a relação simbiótica e o respeito pelo meio ambiente.",
