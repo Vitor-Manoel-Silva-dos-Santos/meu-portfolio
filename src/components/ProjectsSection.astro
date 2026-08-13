@@ -120,6 +120,11 @@ import { projectsConfig } from "../config/projects";
     </div>
 
     <p class="project-gallery-counter" id="project-gallery-counter"></p>
+    <p
+      class="project-gallery-caption is-hidden"
+      id="project-gallery-caption"
+      aria-live="polite"
+    ></p>
   </div>
 </section>
 
@@ -151,10 +156,12 @@ import { projectsConfig } from "../config/projects";
     const galleryModal = document.getElementById("project-gallery-modal");
     const galleryImage = document.getElementById("project-gallery-image");
     const galleryCounter = document.getElementById("project-gallery-counter");
+    const galleryCaption = document.getElementById("project-gallery-caption");
     const galleryClose = document.getElementById("project-gallery-close");
     const galleryPrev = document.getElementById("project-gallery-prev");
     const galleryNext = document.getElementById("project-gallery-next");
     let activeProjectGalleryImages = [];
+    let activeProjectGalleryTexts = [];
     let activeGalleryIndex = 0;
     const preloadedImages = new Set();
 
@@ -196,6 +203,24 @@ import { projectsConfig } from "../config/projects";
       return [];
     }
 
+    function getProjectGalleryTexts(projectIndex, galleryLength) {
+      const project = projectsData[projectIndex] || {};
+
+      if (!Array.isArray(project.galleryTexts)) {
+        return new Array(galleryLength).fill("");
+      }
+
+      const texts = project.galleryTexts
+        .slice(0, galleryLength)
+        .map((text) => (typeof text === "string" ? text.trim() : ""));
+
+      while (texts.length < galleryLength) {
+        texts.push("");
+      }
+
+      return texts;
+    }
+
     function updateGalleryImage() {
       if (
         !galleryImage ||
@@ -213,6 +238,18 @@ import { projectsConfig } from "../config/projects";
       galleryImage.src = activeProjectGalleryImages[normalizedIndex];
       galleryImage.alt = `Project ${normalizedIndex + 1}`;
       galleryCounter.textContent = `${normalizedIndex + 1} / ${activeProjectGalleryImages.length}`;
+
+      if (galleryCaption) {
+        const caption = activeProjectGalleryTexts[normalizedIndex] || "";
+        if (caption) {
+          galleryCaption.textContent = caption;
+          galleryCaption.classList.remove("is-hidden");
+        } else {
+          galleryCaption.textContent = "";
+          galleryCaption.classList.add("is-hidden");
+        }
+      }
+
       preloadGalleryNeighbors(2);
     }
 
@@ -222,6 +259,10 @@ import { projectsConfig } from "../config/projects";
       const project = projectsData[projectIndex] || {};
       activeProjectGalleryImages = getProjectGalleryImages(projectIndex);
       if (activeProjectGalleryImages.length === 0) return;
+      activeProjectGalleryTexts = getProjectGalleryTexts(
+        projectIndex,
+        activeProjectGalleryImages.length
+      );
 
       const coverIndex =
         typeof project.coverImage === "string"

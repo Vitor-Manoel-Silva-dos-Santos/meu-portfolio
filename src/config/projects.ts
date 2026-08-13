@@ -20,6 +20,12 @@ export const projectsConfig = {
         withBase("images/posts/azul_genipapo/bolsa.jpg"), 
         withBase("images/posts/azul_genipapo/modelothipreta.jpg")
       ],
+      galleryTexts: [
+        "Pintura principal da série Azul Genipapo.",
+        "Aplicação da arte em camiseta branca.",
+        "Detalhe da arte aplicada na bolsa.",
+        "Aplicação da arte em camiseta preta.",
+      ],
       description:
         "Uma obra que explora a beleza e a complexidade do genipapo azul, capturando suas cores vibrantes e texturas únicas.",
       // technologies: ["React", "Node.js", "MongoDB", "Stripe"],
