@@ -637,7 +637,7 @@ nav {
 }
 
 .project-description-area {
-  margin-top: 0;
+  margin-top: -1.5rem;
   padding: 0.25rem 0;
   max-width: 800px;
   margin-left: auto;
@@ -905,8 +905,8 @@ nav {
     overflow: hidden;
   }
   .project-description-area {
-    padding: 1.5rem 0;
-    margin-top: 2rem;
+    padding: 0.4rem 0;
+    margin-top: 0.2rem;
   }
   .project-description-viewport {
     height: 180px;
