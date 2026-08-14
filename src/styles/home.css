@@ -393,7 +393,7 @@ nav {
   background: #fff;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   margin-bottom: 1.2rem;
-  border: 4px solid #76cfc5;
+  border: 4px solid #739858;
   cursor: pointer;
   transition:
     box-shadow 0.3s,
@@ -440,11 +440,11 @@ nav {
 .hero-avatar:hover {
   transform: scale(1.06);
   box-shadow: 0 8px 32px rgba(118, 207, 197, 0.18);
-  border-color: #ec6664;
+  border-color: #0000ee;
 }
 
 .hero-avatar:focus-visible {
-  outline: 2px solid #ec6664;
+  outline: 2px solid #0000ee;
   outline-offset: 4px;
 }
 
