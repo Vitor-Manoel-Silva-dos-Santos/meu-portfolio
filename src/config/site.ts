@@ -48,7 +48,7 @@ export const siteConfig = {
   // About Section
   about: {
     title: "Sobre mim",
-    text: "Olá, sou Aukanaii, uma artista visual apaixonada. Adoro explorar novas formas de expressão artística e compartilhar meu trabalho com a comunidade. Neste portfólio, você encontrará minhas criações e projetos. Espero que meu trabalho possa inspirar outros em sua jornada artística.",
+    text: "Sou Aukanaii, artista indígena do povo Atikum Umã. Nasci em Mirandiba (PE) e fui criada no litoral de São Paulo, carregando na minha trajetória a conexão profunda com as minhas raízes e a ancestralidade.\n Encontrei na arte, através da ilustração digital, da animação, do muralismo, da tatuagem e pintura em tela o meu caminho de pertencimento e expressão. Meu trabalho busca visibilizar e honrar os povos nativos latinos-americanos, retratando nossas diversas vivências, resistências e identidades através da arte.",
   },
   
   // Contact Page
