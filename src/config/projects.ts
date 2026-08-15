@@ -76,6 +76,7 @@ export const projectsConfig = {
       coverImage: withBase("images/posts/mulher_facao/Mulherfacao.jpg"),
       galleryImages: [
         withBase("images/posts/mulher_facao/Mulherfacao.jpg"), 
+        withBase("images/posts/mulher_facao/Animacao.gif"), 
         withBase("images/posts/mulher_facao/Bolsa.jpg"), 
         withBase("images/posts/mulher_facao/Quadro.jpg")
       ],
