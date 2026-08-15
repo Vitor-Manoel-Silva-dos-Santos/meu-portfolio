@@ -110,6 +110,45 @@ export const projectsConfig = {
         "Uma obra sobre pertencimento, identidade local e memória coletiva.",
      
     },
+    {
+      title: "Exposição artistica em evento musical",
+      coverImage: withBase("images/posts/caraguatrance/capa_expo.jpg"),
+      galleryImages: [
+        withBase("images/posts/caraguatrance/capa_expo.jpg"), 
+        withBase("images/posts/caraguatrance/1.jpg"),
+        withBase("images/posts/caraguatrance/2.jpg"), 
+        withBase("images/posts/caraguatrance/3.jpg"),
+        withBase("images/posts/caraguatrance/4.jpg"),
+        withBase("images/posts/caraguatrance/5.jpg"),
+      ],
+       galleryTexts: [
+        "Ilustração Principal da série Quem é daqui sabe.",
+        "Aplicação da arte na camiseta branca.",
+        "Aplicação da arte na bolsa ecológica.",
+        "Aplicação da arte na camiseta preta.",
+        "Quadro da obra.",
+      ],
+      technique: "Ilustração digital",
+      description:
+        "Tive a oportunidade de expor minhas obras em um evento de música, criando uma conexão entre arte, cultura e as experiências vividas pelo público naquele momento. Ver meu trabalho inserido nesse ambiente tão intenso e cheio de energia foi uma experiência marcante, que ampliou minha visão sobre o alcance da arte e o impacto que ela pode gerar nas pessoas.",
+     
+    },
+    {
+      title: "Sticker Art",
+      coverImage: withBase("images/posts/Stickers/Sticker.jpg"),
+      galleryImages: [
+        withBase("images/posts/Stickers/Sticker.jpg"), 
+        withBase("images/posts/Stickers/DuplaArt.png"), 
+        withBase("images/posts/Stickers/RosaArt.png"), 
+      ],
+       galleryTexts: [
+        "Stickers autorais com representação da cultura indigena.",
+      ],
+      technique: "Ilustração digital",
+      description:
+        "Stickers autorais com representação da cultura indigena.",
+    },
+    
     
   ],
 };
