@@ -1,9 +1,54 @@
 ---
 import { Fragment } from "astro/jsx-runtime";
 import { siteConfig } from "../config/site";
+
+const normalizedBaseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <section class="hero-section">
+  <img
+    class="hero-background-art"
+    src={`${normalizedBaseUrl}image/fundopeixe.png`}
+    alt=""
+    aria-hidden="true"
+    loading="eager"
+    decoding="async"
+  />
+  <img
+    class="swimming-fish swimming-fish-original"
+    src={`${normalizedBaseUrl}image/peixeunico.png`}
+    alt=""
+    aria-hidden="true"
+    loading="eager"
+    decoding="async"
+  />
+  <img
+    class="swimming-fish swimming-fish-one"
+    src={`${normalizedBaseUrl}image/peixe%20azul.png`}
+    alt=""
+    aria-hidden="true"
+    loading="eager"
+    decoding="async"
+  />
+  <img
+    class="swimming-fish swimming-fish-two"
+    src={`${normalizedBaseUrl}image/peixe2.png`}
+    alt=""
+    aria-hidden="true"
+    loading="eager"
+    decoding="async"
+  />
+  <img
+    class="swimming-fish swimming-fish-three"
+    src={`${normalizedBaseUrl}image/peixe%203.png`}
+    alt=""
+    aria-hidden="true"
+    loading="eager"
+    decoding="async"
+  />
+
   <div class="hero-content-wrapper page-content">
     <div class="hero-left-col hero-content-animate">
       <p class="hero-normal-text">{siteConfig.hero.prefix}</p>
