@@ -181,6 +181,8 @@ import { projectsConfig } from "../config/projects";
     let isGalleryPanning = false;
     let galleryPanStartX = 0;
     let galleryPanStartY = 0;
+    let galleryHistoryActive = false;
+    let closingFromHistory = false;
     const preloadedImages = new Set();
 
     function updateGalleryZoom() {
@@ -349,6 +351,10 @@ import { projectsConfig } from "../config/projects";
       galleryModal.classList.add("is-open");
       galleryModal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
+      if (!galleryHistoryActive) {
+        window.history.pushState({ galleryOpen: true }, "", window.location.href);
+        galleryHistoryActive = true;
+      }
       stopAutoPlay();
 
       if ("requestIdleCallback" in window) {
@@ -360,9 +366,15 @@ import { projectsConfig } from "../config/projects";
 
     function closeGallery() {
       if (!galleryModal) return;
+      if (galleryHistoryActive && !closingFromHistory) {
+        window.history.back();
+        return;
+      }
       galleryModal.classList.remove("is-open");
       galleryModal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
+      galleryHistoryActive = false;
+      closingFromHistory = false;
       resetGalleryZoom();
       if (isAutoPlaying) {
         startAutoPlay();
@@ -948,6 +960,12 @@ import { projectsConfig } from "../config/projects";
       if (e.target === galleryModal) {
         closeGallery();
       }
+    });
+
+    window.addEventListener("popstate", () => {
+      if (!galleryHistoryActive) return;
+      closingFromHistory = true;
+      closeGallery();
     });
 
     document.addEventListener("keydown", (e) => {
