@@ -66,6 +66,16 @@ export const projectsConfig = {
       // liveLink: "#",
       // githubLink: "#",
     },
+    {
+      title: "Quem é daqui sabe",
+      coverImage: withBase("images/posts/quem_e_sabe/Quemesabe.jpg"),
+      galleryImages: [withBase("images/posts/quem_e_sabe/Quemesabe.jpg"), withBase("images/posts/quem_e_sabe/Quemesabe2.jpg"), withBase("images/posts/quem_e_sabe/Quemesabe3.jpg")],
+      description:
+        "Uma obra que celebra a identidade local e a cultura da região, capturando elementos característicos e significativos.",
+      // technologies: ["React", "TypeScript", "Chart.js", "REST API"],
+      // liveLink: "#",
+      // githubLink: "#",
+    },
     
   ],
 };
