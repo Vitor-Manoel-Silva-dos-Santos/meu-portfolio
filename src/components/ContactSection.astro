@@ -41,6 +41,44 @@
       </div>
 
       <button type="submit" class="contact-form-submit">Enviar mensagem</button>
+      <p class="contact-form-status" id="contact-form-status" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
+
+<script>
+  const contactForm = document.querySelector<HTMLFormElement>('.portfolio-contact-form');
+  const contactFormStatus = document.getElementById('contact-form-status');
+  const contactFormSubmit = contactForm?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+  contactForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!contactFormStatus || !contactFormSubmit) return;
+
+    contactFormSubmit.disabled = true;
+    contactFormSubmit.textContent = 'Enviando...';
+    contactFormStatus.className = 'contact-form-status is-sending';
+    contactFormStatus.textContent = 'Enviando sua mensagem...';
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (!response.ok) throw new Error('Form submission failed');
+
+      contactForm.reset();
+      contactFormStatus.className = 'contact-form-status is-success';
+      contactFormStatus.textContent = 'Mensagem enviada com sucesso. Obrigada pelo contato!';
+      contactFormSubmit.textContent = 'Mensagem enviada';
+    } catch {
+      contactFormStatus.className = 'contact-form-status is-error';
+      contactFormStatus.textContent = 'Não foi possível enviar agora. Tente novamente ou entre em contato pelo Instagram.';
+      contactFormSubmit.textContent = 'Tentar novamente';
+    } finally {
+      contactFormSubmit.disabled = false;
+    }
+  });
+</script>
