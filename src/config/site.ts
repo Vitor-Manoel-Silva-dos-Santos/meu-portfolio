@@ -28,7 +28,7 @@ export const siteConfig = {
   hero: {
     prefix: "Me chamo",
     name: "Aukanaii",
-    intro: "Artista visual\nBem-vindo(a) ao meu portfólio!",
+    intro: "Artista visual indígena Atikum Umã,\ncriando imagens sobre ancestralidade, território, identidade e memória.",
     avatar: withBase("image/foto_avatar.jpg"),
     aboutme: withBase("image/sobre_mim.jpg"),
     buttons: {

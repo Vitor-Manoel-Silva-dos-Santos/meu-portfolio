@@ -26,8 +26,9 @@ export const projectsConfig = {
         "Detalhe da arte aplicada na bolsa.",
         "Aplicação da arte em camiseta preta.",
       ],
+      technique: "Ilustração digital e aplicação têxtil",
       description:
-        "Uma obra que explora a beleza e a complexidade do genipapo azul, capturando suas cores vibrantes e texturas únicas.",
+        "Série sobre o genipapo azul e suas texturas, criada para pintura e aplicações têxteis.",
       // technologies: ["React", "Node.js", "MongoDB", "Stripe"],
       // liveLink: "#",
       // githubLink: "#",
@@ -40,8 +41,9 @@ export const projectsConfig = {
         withBase("images/posts/menino_peixe/capalivro.png"),
         withBase("images/posts/menino_peixe/Capacaderno.jpeg") 
       ],
+      technique: "Ilustração digital",
       description:
-        "Uma obra que retrata a conexão harmoniosa entre o menino e a natureza, explorando a relação simbiótica e o respeito pelo meio ambiente.",
+        "Uma cena sobre infância, natureza e a relação de cuidado entre diferentes seres.",
       // technologies: ["Vue.js", "Firebase", "Vuex", "Vuetify"],
       // liveLink: "#",
       // githubLink: "#",
@@ -50,8 +52,9 @@ export const projectsConfig = {
       title: "Mulher onça",
       coverImage: withBase("images/posts/mulher_onca/Mulheronca.jpg"),
       galleryImages: [withBase("images/posts/mulher_onca/Mulheronca.jpg"), withBase("images/posts/mulher_onca/Mulheronca2.jpg"), withBase("images/posts/mulher_onca/Mulheronca3.jpg")],
+      technique: "Ilustração digital",
       description:
-        "Uma mulher onça, representando a força e a beleza da natureza, capturada em uma obra de arte visualmente impactante.",
+        "Figura que relaciona força, identidade e natureza em uma mesma presença.",
       // technologies: ["Astro", "Styled-components", "TypeScript", "Netlify"],
       // liveLink: "#",
       // githubLink: "#",
@@ -60,8 +63,9 @@ export const projectsConfig = {
       title: "Artesão genipapo",
       coverImage: withBase("images/posts/mulher_facao/Mulherfacao.jpg"),
       galleryImages: [withBase("images/posts/mulher_facao/Mulherfacao.jpg"), withBase("images/posts/mulher_facao/Mulherfacao2.jpg"), withBase("images/posts/mulher_facao/Mulherfacao3.jpg")],
+      technique: "Ilustração digital",
       description:
-        "Uma obra que retrata um artesão trabalhando com genipapo, destacando a habilidade artesanal e a tradição cultural.",
+        "Retrato de um fazer artesanal ligado à memória e à tradição do genipapo.",
       // technologies: ["React", "TypeScript", "Chart.js", "REST API"],
       // liveLink: "#",
       // githubLink: "#",
@@ -70,8 +74,9 @@ export const projectsConfig = {
       title: "Quem é daqui sabe",
       coverImage: withBase("images/posts/quem_e_sabe/Quemesabe.jpg"),
       galleryImages: [withBase("images/posts/quem_e_sabe/Quemesabe.jpg"), withBase("images/posts/quem_e_sabe/Quemesabe2.jpg"), withBase("images/posts/quem_e_sabe/Quemesabe3.jpg")],
+      technique: "Ilustração digital",
       description:
-        "Uma obra que celebra a identidade local e a cultura da região, capturando elementos característicos e significativos.",
+        "Uma obra sobre pertencimento, identidade local e memória coletiva.",
       // technologies: ["React", "TypeScript", "Chart.js", "REST API"],
       // liveLink: "#",
       // githubLink: "#",

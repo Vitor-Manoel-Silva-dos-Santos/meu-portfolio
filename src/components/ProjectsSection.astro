@@ -56,6 +56,7 @@ import { projectsConfig } from "../config/projects";
               <div class="project-content-item" data-project-index={index}>
                 <h3 class="project-title">{project.title}</h3>
                 <p class="project-description">{project.description}</p>
+                {project.technique && <p class="project-technique">{project.technique}</p>}
                 {/* <div class="project-technologies">
                   {project.technologies.map((tech) => (
                     <span class="technology-tag">{tech}</span>
@@ -120,6 +121,7 @@ import { projectsConfig } from "../config/projects";
     </div>
 
     <p class="project-gallery-counter" id="project-gallery-counter"></p>
+    <div class="project-gallery-thumbnails" id="project-gallery-thumbnails" aria-label="Miniaturas da galeria"></div>
     <p
       class="project-gallery-caption is-hidden"
       id="project-gallery-caption"
@@ -157,6 +159,7 @@ import { projectsConfig } from "../config/projects";
     const galleryImage = document.getElementById("project-gallery-image");
     const galleryCounter = document.getElementById("project-gallery-counter");
     const galleryCaption = document.getElementById("project-gallery-caption");
+    const galleryThumbnails = document.getElementById("project-gallery-thumbnails");
     const galleryClose = document.getElementById("project-gallery-close");
     const galleryPrev = document.getElementById("project-gallery-prev");
     const galleryNext = document.getElementById("project-gallery-next");
@@ -221,6 +224,30 @@ import { projectsConfig } from "../config/projects";
       return texts;
     }
 
+    function renderGalleryThumbnails() {
+      if (!galleryThumbnails) return;
+
+      galleryThumbnails.innerHTML = "";
+      activeProjectGalleryImages.forEach((src, index) => {
+        const thumbnail = document.createElement("button");
+        thumbnail.type = "button";
+        thumbnail.className = "project-gallery-thumbnail";
+        thumbnail.setAttribute("aria-label", `Abrir imagem ${index + 1}`);
+
+        const image = document.createElement("img");
+        image.src = src;
+        image.alt = "";
+        image.loading = "lazy";
+        image.decoding = "async";
+        thumbnail.appendChild(image);
+        thumbnail.addEventListener("click", () => {
+          activeGalleryIndex = index;
+          updateGalleryImage();
+        });
+        galleryThumbnails.appendChild(thumbnail);
+      });
+    }
+
     function updateGalleryImage() {
       if (
         !galleryImage ||
@@ -238,6 +265,12 @@ import { projectsConfig } from "../config/projects";
       galleryImage.src = activeProjectGalleryImages[normalizedIndex];
       galleryImage.alt = `Project ${normalizedIndex + 1}`;
       galleryCounter.textContent = `${normalizedIndex + 1} / ${activeProjectGalleryImages.length}`;
+
+      if (galleryThumbnails) {
+        galleryThumbnails.querySelectorAll(".project-gallery-thumbnail").forEach((thumbnail, index) => {
+          thumbnail.classList.toggle("is-active", index === normalizedIndex);
+        });
+      }
 
       if (galleryCaption) {
         const caption = activeProjectGalleryTexts[normalizedIndex] || "";
@@ -263,6 +296,7 @@ import { projectsConfig } from "../config/projects";
         projectIndex,
         activeProjectGalleryImages.length
       );
+      renderGalleryThumbnails();
 
       const coverIndex =
         typeof project.coverImage === "string"
