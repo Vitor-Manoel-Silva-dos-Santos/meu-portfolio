@@ -92,6 +92,12 @@ import { projectsConfig } from "../config/projects";
       x
     </button>
 
+    <div class="project-gallery-zoom-controls" aria-label="Controles de zoom">
+      <button type="button" id="project-gallery-zoom-out" aria-label="Reduzir zoom">−</button>
+      <button type="button" id="project-gallery-zoom-reset" aria-label="Restaurar zoom">100%</button>
+      <button type="button" id="project-gallery-zoom-in" aria-label="Aumentar zoom">+</button>
+    </div>
+
     <div class="project-gallery-content">
       <button
         type="button"
@@ -163,10 +169,44 @@ import { projectsConfig } from "../config/projects";
     const galleryClose = document.getElementById("project-gallery-close");
     const galleryPrev = document.getElementById("project-gallery-prev");
     const galleryNext = document.getElementById("project-gallery-next");
+    const galleryZoomIn = document.getElementById("project-gallery-zoom-in");
+    const galleryZoomOut = document.getElementById("project-gallery-zoom-out");
+    const galleryZoomReset = document.getElementById("project-gallery-zoom-reset");
     let activeProjectGalleryImages = [];
     let activeProjectGalleryTexts = [];
     let activeGalleryIndex = 0;
+    let galleryZoom = 1;
+    let galleryPanX = 0;
+    let galleryPanY = 0;
+    let isGalleryPanning = false;
+    let galleryPanStartX = 0;
+    let galleryPanStartY = 0;
     const preloadedImages = new Set();
+
+    function updateGalleryZoom() {
+      if (!galleryImage) return;
+      galleryImage.style.transform = `translate(${galleryPanX}px, ${galleryPanY}px) scale(${galleryZoom})`;
+      galleryImage.classList.toggle("is-zoomed", galleryZoom > 1);
+      if (galleryZoomReset) {
+        galleryZoomReset.textContent = `${Math.round(galleryZoom * 100)}%`;
+      }
+    }
+
+    function setGalleryZoom(nextZoom) {
+      galleryZoom = Math.min(3, Math.max(1, nextZoom));
+      if (galleryZoom === 1) {
+        galleryPanX = 0;
+        galleryPanY = 0;
+      }
+      updateGalleryZoom();
+    }
+
+    function resetGalleryZoom() {
+      galleryZoom = 1;
+      galleryPanX = 0;
+      galleryPanY = 0;
+      updateGalleryZoom();
+    }
 
     function preloadImage(src) {
       if (!src || preloadedImages.has(src)) return;
@@ -263,6 +303,7 @@ import { projectsConfig } from "../config/projects";
       activeGalleryIndex = normalizedIndex;
 
       galleryImage.src = activeProjectGalleryImages[normalizedIndex];
+      resetGalleryZoom();
       galleryImage.alt = `Project ${normalizedIndex + 1}`;
       galleryCounter.textContent = `${normalizedIndex + 1} / ${activeProjectGalleryImages.length}`;
 
@@ -322,6 +363,7 @@ import { projectsConfig } from "../config/projects";
       galleryModal.classList.remove("is-open");
       galleryModal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
+      resetGalleryZoom();
       if (isAutoPlaying) {
         startAutoPlay();
       }
@@ -868,6 +910,38 @@ import { projectsConfig } from "../config/projects";
     galleryNext?.addEventListener("click", () => {
       activeGalleryIndex += 1;
       updateGalleryImage();
+    });
+
+    galleryZoomIn?.addEventListener("click", () => setGalleryZoom(galleryZoom + 0.25));
+    galleryZoomOut?.addEventListener("click", () => setGalleryZoom(galleryZoom - 0.25));
+    galleryZoomReset?.addEventListener("click", resetGalleryZoom);
+
+    galleryImage?.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      setGalleryZoom(galleryZoom + (event.deltaY < 0 ? 0.2 : -0.2));
+    }, { passive: false });
+
+    galleryImage?.addEventListener("pointerdown", (event) => {
+      if (galleryZoom <= 1 || !(galleryImage instanceof HTMLElement)) return;
+      isGalleryPanning = true;
+      galleryPanStartX = event.clientX - galleryPanX;
+      galleryPanStartY = event.clientY - galleryPanY;
+      galleryImage.setPointerCapture(event.pointerId);
+    });
+
+    galleryImage?.addEventListener("pointermove", (event) => {
+      if (!isGalleryPanning) return;
+      galleryPanX = event.clientX - galleryPanStartX;
+      galleryPanY = event.clientY - galleryPanStartY;
+      updateGalleryZoom();
+    });
+
+    galleryImage?.addEventListener("pointerup", () => {
+      isGalleryPanning = false;
+    });
+
+    galleryImage?.addEventListener("pointercancel", () => {
+      isGalleryPanning = false;
     });
 
     galleryModal?.addEventListener("click", (e) => {

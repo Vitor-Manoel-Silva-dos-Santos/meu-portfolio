@@ -808,6 +808,47 @@ nav {
   display: flex;
 }
 
+.project-gallery-zoom-controls {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 3002;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid rgba(229, 215, 196, 0.35);
+  border-radius: 999px;
+  background: rgba(38, 30, 18, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.project-gallery-zoom-controls button {
+  min-width: 36px;
+  height: 34px;
+  padding: 0 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #f7f1df;
+  font: inherit;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.project-gallery-zoom-controls button:nth-child(2) {
+  min-width: 52px;
+  font-size: 0.75rem;
+}
+
+.project-gallery-zoom-controls button:hover,
+.project-gallery-zoom-controls button:focus-visible {
+  background: #cfbb99;
+  color: #4c3d19;
+  outline: none;
+}
+
 .project-gallery-content {
   width: min(1100px, 100%);
   max-height: calc(100vh - 190px);
@@ -824,6 +865,20 @@ nav {
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
   background: rgba(255, 255, 255, 0.04);
+  transform-origin: center center;
+  transition: transform 0.18s ease;
+  cursor: zoom-in;
+  touch-action: none;
+  user-select: none;
+}
+
+.project-gallery-image.is-zoomed {
+  cursor: grab;
+  transition: none;
+}
+
+.project-gallery-image.is-zoomed:active {
+  cursor: grabbing;
 }
 
 .project-gallery-close {
@@ -1032,6 +1087,11 @@ nav {
   .project-gallery-modal {
     justify-content: flex-start;
     padding: 4.25rem 0.75rem 1rem;
+  }
+
+  .project-gallery-zoom-controls {
+    top: 0.85rem;
+    left: 0.75rem;
   }
 
   .project-gallery-content {
