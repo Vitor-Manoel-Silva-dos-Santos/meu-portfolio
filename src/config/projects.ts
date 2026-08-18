@@ -17,6 +17,7 @@ export const projectsConfig = {
       galleryImages: [
         withBase("images/posts/azul_genipapo/Azulgenipapo.jpg"), 
         withBase("images/posts/azul_genipapo/modelothibranca.jpg"), 
+        withBase("images/posts/azul_genipapo/muralismo.jpeg"), 
         withBase("images/posts/azul_genipapo/bolsa.jpg"), 
         withBase("images/posts/azul_genipapo/Quadro.jpg"), 
         withBase("images/posts/azul_genipapo/modelothipreta.jpg")
@@ -24,13 +25,14 @@ export const projectsConfig = {
       galleryTexts: [
         "Ilustração Principal da série Azul Jenipapo.",
         "Aplicação da arte em camiseta branca.",
+        "Simulação da arte em parede de ambiente.",
         "Aplicação da arte em bolsa ecológica.",
         "Quadro da obra.",
         "Aplicação da arte em camiseta preta.",
       ],
-      technique: "Pintura à mão - Ilustração digital - Aplicação em produtos",
-      description:
-        "Série sobre o genipapo azul e suas texturas, criada para pintura e aplicações têxteis.",
+      technique: "Ilustração digital - Aplicação em produtos - Muralismo",
+      description:"Azul jenipapo busca representar em uma figura feminina a força, proteção e pertencimento ."
+        // "Azul jenipapo busca unir em uma figura feminina a expressão cultural, o pertencimento e a memória ancestral.",
     },
     {
       title: "Curumin pescador de sonhos",
@@ -38,16 +40,18 @@ export const projectsConfig = {
       galleryImages: [
         withBase("images/posts/menino_peixe/Meninopeixe.jpg"), 
         withBase("images/posts/menino_peixe/capalivro.png"),
+        withBase("images/posts/menino_peixe/muralismo.jpeg"), 
         withBase("images/posts/menino_peixe/Quadro.jpg"),
         withBase("images/posts/menino_peixe/Capacaderno.jpeg") 
       ],
       galleryTexts: [
         "Ilustração Principal da série Curumin pescador de sonhos.",
-        "Aplicação da arte na capa de livro.",
+        "Simulação da arte na capa de livro.",
+        "Simulação da arte em parede de ambiente.",
         "Quadro da obra.",
-        "Aplicação da arte na capa de caderno."
+        "Simulação da arte na capa de caderno."
       ],
-      technique: "Ilustração digital",
+      technique: "Ilustração digital - Aplicação em produtos - Muralismo",
       description:
         "Uma cena sobre infância, natureza e a relação de cuidado entre diferentes seres.",
     },
@@ -57,12 +61,14 @@ export const projectsConfig = {
       galleryImages: [
         withBase("images/posts/mulher_onca/Mulheronca.jpg"), 
         withBase("images/posts/mulher_onca/bolsa.jpg"), 
+        withBase("images/posts/mulher_onca/muralismo.jpeg"), 
         withBase("images/posts/mulher_onca/Quadro.jpg")
       ],
-      technique: "Ilustração digital",
+      technique: "Ilustração digital - Aplicação em produtos - Muralismo",
       galleryTexts: [
         "Ilustração Principal da série Espírito de jaguaratê.",
         "Aplicação da arte na bolsa ecológica.",
+        "Simulação da arte em parede de ambiente.",
         "Quadro da obra.",
       ],
       description:
@@ -74,16 +80,18 @@ export const projectsConfig = {
       galleryImages: [
         withBase("images/posts/mulher_facao/Mulherfacao.jpg"), 
         withBase("images/posts/mulher_facao/Animacao.gif"), 
+        withBase("images/posts/mulher_facao/muralismo.jpeg"), 
         withBase("images/posts/mulher_facao/Bolsa.jpg"), 
         withBase("images/posts/mulher_facao/Quadro.jpg")
       ],
       galleryTexts: [
         "Ilustração Principal da série A mão que cura e pinta.",
         "Animação digital da obra.",
+        "Simulação da arte em parede de ambiente.",
         "Aplicação da arte na bolsa ecológica.",
         "Quadro da obra.",
       ],
-      technique: "Ilustração digital - Animação digital - aplicação em produtos",
+      technique: "Ilustração digital - Animação digital - Aplicação em produtos - Aplicação em ambiente",
       description:
         "O preparo do pigmento simboliza a união entre a pintura corporal, a proteção e a sabedoria ancestral.",
     },
@@ -133,6 +141,25 @@ export const projectsConfig = {
      
     },
     {
+      title: "Tatuagem realizadas",
+      coverImage: withBase("images/posts/tattoo/capa.jpg"),
+      galleryImages: [
+        withBase("images/posts/tattoo/capa.jpg"), 
+        withBase("images/posts/tattoo/tattoo_01.jpg"), 
+        withBase("images/posts/tattoo/tattoo_02.jpg"),
+        withBase("images/posts/tattoo/tattoo_03.jpg"),
+        withBase("images/posts/tattoo/tattoo_04.jpg"),
+        withBase("images/posts/tattoo/tattoo_05.jpg"),
+        withBase("images/posts/tattoo/tattoo_06.jpg"),
+        withBase("images/posts/tattoo/tattoo_07.jpg"),
+        
+      ],
+      technique: "Ilustração digital - Tatuagem em pele",
+      description:
+      "Tatuagens realizadas com base em ilustrações autorais."
+      // "Tatuagens realizadas com base em ilustrações autorais. A tatuagem é uma prática ancestral que representa identidade, espiritualidade e conexão com os antepassados. Mais do que uma arte corporal, ela preserva tradições, histórias e a cultura dos povos originários.",
+    },
+    {
       title: "Sticker Art",
       coverImage: withBase("images/posts/Stickers/Sticker.jpg"),
       galleryImages: [
@@ -146,24 +173,6 @@ export const projectsConfig = {
       technique: "Ilustração digital - Aplicação em produtos",
       description:
         "Stickers autorais com representação da cultura indigena.",
-    },
-    {
-      title: "Tatuagem realizadas",
-      coverImage: withBase("images/posts/tattoo/capa.jpg"),
-      galleryImages: [
-        withBase("images/posts/tattoo/capa.jpg"), 
-        withBase("images/posts/tattoo/tattoo_01.jpg"), 
-        withBase("images/posts/tattoo/tattoo_02.jpg"),
-        withBase("images/posts/tattoo/tattoo_03.jpg"),
-        withBase("images/posts/tattoo/tattoo_04.jpg"),
-        withBase("images/posts/tattoo/tattoo_05.jpg"),
-        withBase("images/posts/tattoo/tattoo_06.jpg"),
-        withBase("images/posts/tattoo/tattoo_07.jpg"),
-
-      ],
-      technique: "Ilustração digital - Tatuagem em pele",
-      description:
-        "Tatuagens realizadas com base em ilustrações autorais. A tatuagem é uma prática ancestral que representa identidade, espiritualidade e conexão com os antepassados. Mais do que uma arte corporal, ela preserva tradições, histórias e a cultura dos povos originários.",
     },
     
     
