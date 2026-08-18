@@ -28,7 +28,7 @@ export const projectsConfig = {
         "Quadro da obra.",
         "Aplicação da arte em camiseta preta.",
       ],
-      technique: "Pintura à mão - Ilustração digital",
+      technique: "Pintura à mão - Ilustração digital - Aplicação em produtos",
       description:
         "Série sobre o genipapo azul e suas texturas, criada para pintura e aplicações têxteis.",
     },
@@ -50,9 +50,6 @@ export const projectsConfig = {
       technique: "Ilustração digital",
       description:
         "Uma cena sobre infância, natureza e a relação de cuidado entre diferentes seres.",
-      // technologies: ["Vue.js", "Firebase", "Vuex", "Vuetify"],
-      // liveLink: "#",
-      // githubLink: "#",
     },
     {
       title: "Espírito de jaguaratê",
@@ -107,7 +104,7 @@ export const projectsConfig = {
         "Aplicação da arte na camiseta preta.",
         "Quadro da obra.",
       ],
-      technique: "Ilustração digital",
+      technique: "Ilustração digital - Aplicação em produtos",
       description:
         "Uma obra sobre pertencimento, resistência e a identidade cotidiana da periferia. Mostrando que a memória e as raízes indígenas e pretas vivem e pulsam em cada canto da comunidade.",
      
@@ -130,7 +127,7 @@ export const projectsConfig = {
         "Aplicação da arte na camiseta preta.",
         "Quadro da obra.",
       ],
-      technique: "Ilustração digital",
+      technique: "Ilustração digital - Aplicação em produtos",
       description:
         "Tive a oportunidade de expor minhas obras em um evento de música, criando uma conexão entre arte, cultura e as experiências vividas pelo público naquele momento. Ver meu trabalho inserido nesse ambiente tão intenso e cheio de energia foi uma experiência marcante, que ampliou minha visão sobre o alcance da arte e o impacto que ela pode gerar nas pessoas.",
      
@@ -146,7 +143,7 @@ export const projectsConfig = {
        galleryTexts: [
         "Stickers autorais com representação da cultura indigena.",
       ],
-      technique: "Ilustração digital",
+      technique: "Ilustração digital - Aplicação em produtos",
       description:
         "Stickers autorais com representação da cultura indigena.",
     },
