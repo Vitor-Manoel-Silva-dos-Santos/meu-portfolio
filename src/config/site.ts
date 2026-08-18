@@ -28,7 +28,7 @@ export const siteConfig = {
   hero: {
     prefix: "Me chamo",
     name: "Aukanaii",
-    intro: "Artista ilustradora indígena Atikum Umã,\ncriando imagens sobre ancestralidade, território, identidade e memória.",
+    intro: "Artista ilustradora indígena Atikum Umã,\ncriando arte sobre ancestralidade, território, identidade e memória.",
     avatar: withBase("image/foto_avatar.jpg"),
     aboutme: withBase("image/sobre_mim.jpg"),
     buttons: {
@@ -48,7 +48,7 @@ export const siteConfig = {
   // About Section
   about: {
     title: "Sobre mim",
-    text: "Sou Aukanaii, artista indígena do povo Atikum Umã. Nasci em Mirandiba (PE) e fui criada no litoral de São Paulo, carregando na minha trajetória a conexão profunda com as minhas raízes e a ancestralidade.\n Encontrei na arte, através da ilustração digital, da animação, do muralismo, da tatuagem e pintura em tela o meu caminho de pertencimento e expressão. Meu trabalho busca visibilizar e honrar os povos nativos latinos-americanos, retratando nossas diversas vivências, resistências e identidades através da arte.",
+    text: "Sou Aukanaii, artista indígena Atikum Umã. Nasci em Mirandiba (PE) e fui criada no litoral de São Paulo.\n\nEncontrei na arte, através da ilustração digital, animação, muralismo, tatuagem e pintura em tela o meu caminho de pertencimento e expressão. Meu trabalho busca visibilizar os povos originários, retratando diversas vivências, resistências e identidades através da arte.",
   },
   
   // Contact Page

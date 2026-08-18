@@ -28,7 +28,7 @@ export const projectsConfig = {
         "Quadro da obra.",
         "Aplicação da arte em camiseta preta.",
       ],
-      technique: "Pintura à mão e Ilustração digital",
+      technique: "Pintura à mão - Ilustração digital",
       description:
         "Série sobre o genipapo azul e suas texturas, criada para pintura e aplicações têxteis.",
     },
@@ -55,7 +55,7 @@ export const projectsConfig = {
       // githubLink: "#",
     },
     {
-      title: "Mulher onça",
+      title: "Espírito de jaguaratê",
       coverImage: withBase("images/posts/mulher_onca/Mulheronca.jpg"),
       galleryImages: [
         withBase("images/posts/mulher_onca/Mulheronca.jpg"), 
@@ -64,15 +64,15 @@ export const projectsConfig = {
       ],
       technique: "Ilustração digital",
       galleryTexts: [
-        "Ilustração Principal da série Mulher onça.",
+        "Ilustração Principal da série Espírito de jaguaratê.",
         "Aplicação da arte na bolsa ecológica.",
         "Quadro da obra.",
       ],
       description:
-        "Figura que relaciona força, identidade e natureza em uma mesma presença.",
+        "O espírito de jaguaratê representa a força máxima da floresta, a proteção e o mistério da noite.",
     },
     {
-      title: "Artesão Jenipapo",
+      title: "A mão que cura e pinta",
       coverImage: withBase("images/posts/mulher_facao/Mulherfacao.jpg"),
       galleryImages: [
         withBase("images/posts/mulher_facao/Mulherfacao.jpg"), 
@@ -81,13 +81,14 @@ export const projectsConfig = {
         withBase("images/posts/mulher_facao/Quadro.jpg")
       ],
       galleryTexts: [
-        "Ilustração Principal da série Artesão Jenipapo.",
+        "Ilustração Principal da série A mão que cura e pinta.",
+        "Animação digital da obra.",
         "Aplicação da arte na bolsa ecológica.",
         "Quadro da obra.",
       ],
-      technique: "Ilustração digital",
+      technique: "Ilustração digital - Animação digital - aplicação em produtos",
       description:
-        "Retrato de um fazer artesanal ligado à memória e à tradição do jenipapo.",
+        "O preparo do pigmento simboliza a união entre a pintura corporal, a proteção e a sabedoria ancestral.",
     },
     {
       title: "Quem é daqui sabe",
@@ -108,7 +109,7 @@ export const projectsConfig = {
       ],
       technique: "Ilustração digital",
       description:
-        "Uma obra sobre pertencimento, identidade local e memória coletiva.",
+        "Uma obra sobre pertencimento, resistência e a identidade cotidiana da periferia. Mostrando que a memória e as raízes indígenas e pretas vivem e pulsam em cada canto da comunidade.",
      
     },
     {
@@ -148,6 +149,24 @@ export const projectsConfig = {
       technique: "Ilustração digital",
       description:
         "Stickers autorais com representação da cultura indigena.",
+    },
+    {
+      title: "Tatuagem realizadas",
+      coverImage: withBase("images/posts/tattoo/capa.jpg"),
+      galleryImages: [
+        withBase("images/posts/tattoo/capa.jpg"), 
+        withBase("images/posts/tattoo/tattoo_01.jpg"), 
+        withBase("images/posts/tattoo/tattoo_02.jpg"),
+        withBase("images/posts/tattoo/tattoo_03.jpg"),
+        withBase("images/posts/tattoo/tattoo_04.jpg"),
+        withBase("images/posts/tattoo/tattoo_05.jpg"),
+        withBase("images/posts/tattoo/tattoo_06.jpg"),
+        withBase("images/posts/tattoo/tattoo_07.jpg"),
+
+      ],
+      technique: "Ilustração digital - Tatuagem em pele",
+      description:
+        "Tatuagens realizadas com base em ilustrações autorais. A tatuagem é uma prática ancestral que representa identidade, espiritualidade e conexão com os antepassados. Mais do que uma arte corporal, ela preserva tradições, histórias e a cultura dos povos originários.",
     },
     
     
