@@ -18,10 +18,10 @@ export const siteConfig = {
   
   // Navigation
   navigation: {
-    home: "Home",
+    home: "Início",
     posts: "Artes",
     contact: "Contato",
-    comments: "Comments",
+    comments: "Comentários",
   },
   
   // Hero Section
@@ -53,35 +53,35 @@ export const siteConfig = {
   
   // Contact Page
   contact: {
-    title: "Get In Touch",
-    subtitle: "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
+    title: "Entre em contato",
+    subtitle: "Estou sempre aberta para conversar sobre novos projetos, ideias criativas e oportunidades de colaborar.",
     info: {
       email: {
-        label: "Email",
-        value: "tom@example.com",
-        link: "mailto:tom@example.com",
+        label: "E-mail",
+        value: "ingrideaukanaii16@gmail.com",
+        link: "mailto:ingrideaukanaii16@gmail.com",
       },
       phone: {
-        label: "Phone",
-        value: "+1 (234) 567-890",
-        link: "tel:+1 (234) 567-890",
+        label: "Telefone",
+        value: "+55 (XX) XXXXX-XXXX",
+        link: "tel:+55XXXXXXXXXXXX",
       },
       location: {
-        label: "Location",
-        value: "San Francisco, CA",
+        label: "Localização",
+        value: "Brasil",
       },
     },
     followMe: {
-      title: "Follow Me",
+      title: "Siga-me",
       links: [
-        { name: "Instagram", icon: withBase("svg/twitter.svg"), url: "https://x.com/astrodotbuild" },
+        { name: "Instagram", icon: withBase("svg/twitter.svg"), url: "https://www.instagram.com/aukanaii_art" },
       ],
     },
     footerText: [
-      "I typically respond to messages within 24 hours during business days.",
-      "Looking forward to hearing from you! 🚀",
+      "Normalmente respondo mensagens em até 24 horas durante os dias úteis.",
+      "Ficarei feliz em ouvir sua ideia! ✨",
     ],
-    messageButton: "💬 Leave a Message",
+    messageButton: "💬 Enviar mensagem",
   },
   
   // // Footer
@@ -100,24 +100,24 @@ export const siteConfig = {
   
   // Posts Page
   posts: {
-    title: "Blog Posts",
-    subtitle: "Explore our latest articles on web development, design, and technology",
-    searchPlaceholder: "Search posts...",
+    title: "Artes",
+    subtitle: "Explore meus trabalhos, projetos e criações artísticas.",
+    searchPlaceholder: "Buscar artes...",
   },
   
   // Comments Page
   comments: {
-    title: "Comments & Discussion",
-    subtitle: "Share your thoughts, questions, or suggestions here. Let's connect and discuss!",
+    title: "Comentários e discussões",
+    subtitle: "Compartilhe seus pensamentos, perguntas ou sugestões aqui. Vamos conversar e conectar!",
     guidelines: {
-      title: "Community Guidelines",
+      title: "Diretrizes da comunidade",
       items: [
-        "Be respectful and constructive in your comments",
-        "No spam, self-promotion, or advertising allowed",
-        "No personal attacks, hate speech, or harassment",
-        "Stay on topic and keep discussions relevant",
-        "No inappropriate, offensive, or illegal content",
-        "Use clear, friendly, and inclusive language",
+        "Seja respeitoso e construtivo nos comentários",
+        "Não é permitido spam, autopromoção ou publicidade",
+        "Sem ataques pessoais, discurso de ódio ou assédio",
+        "Mantenha o foco no tema e nas discussões relevantes",
+        "Sem conteúdo inadequado, ofensivo ou ilegal",
+        "Use uma linguagem clara, amigável e inclusiva",
       ],
     },
   },

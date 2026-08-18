@@ -118,7 +118,7 @@ export const projectsConfig = {
      
     },
     {
-      title: "Exposição artistica em evento musical",
+      title: "Exposição artística em evento musical",
       coverImage: withBase("images/posts/caraguatrance/capa_expo.jpg"),
       galleryImages: [
         withBase("images/posts/caraguatrance/capa_expo.jpg"), 
